@@ -1,0 +1,46 @@
+# choose environment, use development environment for developing
+spring:
+  profiles:
+    active: dev
+---
+# development
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:demodb
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+# in development environment, use port 8080
+server:
+  port: 8080
+#---
+## application
+#spring:
+#  config:
+#    activate:
+#      on-profile: pro
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:appdb
+#    username: sa
+#    password: password
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+## in product environment, use port 8081
+#server:
+#  port: 8081
+
