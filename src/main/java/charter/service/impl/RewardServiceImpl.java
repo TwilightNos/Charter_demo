@@ -78,4 +78,15 @@ public class RewardServiceImpl implements RewardService {
         return point;
     }
 
+
+    @Override
+    public Reward saveReward(Reward reward) {
+
+        Reward newReward = new Reward();
+        newReward.setCustomerId(reward.getCustomerId());
+        newReward.setTransactionAmount(reward.getTransactionAmount());
+        newReward.setTransactionDate(reward.getTransactionDate());
+
+        return repository.save(newReward);
+    }
 }

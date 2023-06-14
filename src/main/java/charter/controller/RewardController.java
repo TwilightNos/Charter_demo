@@ -1,17 +1,16 @@
 package charter.controller;
 
+import charter.pojo.Reward;
 import charter.service.RewardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 
 @RestController
 @RequestMapping("/Reward")
+@CrossOrigin(origins = "*")
 public class RewardController {
 
     @Autowired
@@ -35,6 +34,14 @@ public class RewardController {
 
 
         return rewardPoints;
+    }
+
+
+    @PostMapping
+    public Reward addRecord(@RequestBody Reward reward){
+
+
+        return rewardService.saveReward(reward);
     }
 
 
