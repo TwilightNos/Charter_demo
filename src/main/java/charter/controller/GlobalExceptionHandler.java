@@ -13,7 +13,7 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     /**
-     * This exception handler will receive a CustomerIdNotFoundException, and receice a hashMap with code 1
+     * This exception handler will receive a CustomerIdNotFoundException, and receive a hashMap with code 1
      * to indicate the front end that this customer id is not in record.
      * @param ex the exception from the controller
      * @return this exception handler will return a hashmap with same structure as normal situation, just different at
