@@ -19,29 +19,23 @@ public class RewardController {
 
 
     /**
-     *
+     * This method will get result from the service layer and send it to front end
      * @param id: The 'id' Param is transported to backend in the url, get this parameter use @PathVariable in the endpoint
-     * @return the return value of this endpoint is a 2-length int array.
-     *         This array contains 2 results, including the reward points earned for the customer with the id transported
-     *         from the parameter, this api will call the service layer to calculate the per-month and total reward and
-     *         store it inside the return array.
+     * @return The return value is a map contains the result sent to the front-end
      */
     @GetMapping("/{id}")
     public Map<String,Integer> getRewardPointById(@PathVariable Integer id){
-
-        Map<String,Integer> rewardPoints = rewardService.getRewardPointById(id);
-        System.out.println(rewardPoints);
-
-
-        return rewardPoints;
+        return rewardService.getRewardPointById(id);
     }
 
-
+    /**
+     * This method will receive a new reward record from front-end and send it to service layer to add it
+     * @param reward a Reward Object in request body
+     * @return it returns a Reward Object which is the result from service layer
+     */
     @PostMapping
-    public Reward addRecord(@RequestBody Reward reward){
-
-
-        return rewardService.saveReward(reward);
+    public Reward addReward(@RequestBody Reward reward){
+        return rewardService.addReward(reward);
     }
 
 

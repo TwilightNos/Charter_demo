@@ -9,6 +9,6 @@ public interface RewardService {
 
     public Map<String, Integer> getRewardPointById(Integer id);
 
-    public Reward saveReward(Reward reward);
+    public Reward addReward(Reward reward);
 
 }

@@ -13,9 +13,11 @@ import java.util.Optional;
 @Repository
 public interface RewardRepository extends JpaRepository<Reward,Integer> {
 
-
-
-
+    /**
+     * use native query to select all the record with specific customer id
+     * @param id the customer id received from the service layer
+     * @return return a List of records which matches the condition
+     */
     @Query(value = "select * from Reward where customer_id=:id",nativeQuery = true)
     List<Reward> findAllByCustomerId(@Param("id") Integer id);
 }

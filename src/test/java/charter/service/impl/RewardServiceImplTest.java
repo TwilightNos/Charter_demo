@@ -1,5 +1,6 @@
 package charter.service.impl;
 
+import charter.exception.CustomerIdNotFoundException;
 import charter.pojo.Reward;
 import charter.service.RewardService;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,11 +29,38 @@ class RewardServiceImplTest {
 
     @Test
     @Sql(scripts = "classpath:data.sql")
-    void getRewardPointById() {
+    public void getRewardPointById() {
 
-        Map<String,Integer> rewardList = service.getRewardPointById(1);
-        System.out.println(rewardList);
+        Map<String,Integer> result = new HashMap<String,Integer>(){{
+            put("thirdMonth",120);
+            put("secondMonth",180);
+            put("firstMonth",90);
+            put("ThreeMonthsTotal",390);
+            put("code",0);
+        }};
+        assertEquals(result,service.getRewardPointById(1));
 
 
     }
+
+
+    @Test
+    @Sql(scripts = "classpath:data.sql")
+    public void getRewardPointByIdNotFound(){
+        assertThrows(CustomerIdNotFoundException.class,()->service.getRewardPointById(2));
+    }
+
+
+    @Test
+    @Sql(scripts = "classpath:data.sql")
+    public void testAddReward(){
+        Reward reward = new Reward();
+        reward.setTransactionId(8);
+        reward.setCustomerId(2);
+        reward.setTransactionAmount(100);
+        reward.setTransactionDate(LocalDate.of(2023,5,25));
+        assertEquals(reward,service.addReward(reward));
+    }
+
+
 }

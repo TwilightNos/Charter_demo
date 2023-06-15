@@ -5,6 +5,7 @@ package charter.pojo;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * This Pojo Class is used to Store The Data
@@ -30,6 +31,19 @@ public class Reward {
 
     public Reward() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reward reward = (Reward) o;
+        return Objects.equals(transactionId, reward.transactionId) && Objects.equals(customerId, reward.customerId) && Objects.equals(transactionAmount, reward.transactionAmount) && Objects.equals(transactionDate, reward.transactionDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(transactionId, customerId, transactionAmount, transactionDate);
     }
 
     @Override
