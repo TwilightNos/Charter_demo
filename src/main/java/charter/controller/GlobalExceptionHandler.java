@@ -1,6 +1,7 @@
 package charter.controller;
 
 import charter.exception.CustomerIdNotFoundException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +29,18 @@ public class GlobalExceptionHandler {
         response.put("firstMonth",0);
         response.put("ThreeMonthsTotal",0);
         response.put("code",1);
+        return response;
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public Map<String,Integer> exceptionHandlerMethodArgumentNotValid(Exception ex){
+        Map<String,Integer> response = new HashMap<>();
+        response.put("thirdMonth",0);
+        response.put("secondMonth",0);
+        response.put("firstMonth",0);
+        response.put("ThreeMonthsTotal",0);
+        response.put("code",2);
         return response;
     }
 

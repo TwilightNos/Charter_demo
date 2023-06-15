@@ -53,7 +53,7 @@ public class RewardServiceImpl implements RewardService {
          * firstMonth represents the point in the first month in past three months
          * secondMonth represents the point in the second month in past three months
          * thirdMonth represents the point in the third month in past three months
-         * code represents the response status, 0 for success, 1 for failure
+         * code represents the response status, 0 for success, 1 for failure, 2 for invalid input value
          */
         Map<String,Integer> rewardPoints = new HashMap<>();
         rewardPoints.put("thirdMonth",calculatePointByDate(thirdMonth,latestDate,rewards));

@@ -3,6 +3,7 @@ package charter.pojo;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
@@ -18,6 +19,7 @@ public class Reward {
     @Column(name = "customer_id")
     private Integer customerId;
     @Column(name = "transaction_amount")
+    @Min(value = 0)
     private Integer transactionAmount;
     @Column(name = "transaction_date")
     private LocalDate transactionDate;

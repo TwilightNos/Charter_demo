@@ -5,6 +5,7 @@ import charter.service.RewardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 
@@ -34,7 +35,7 @@ public class RewardController {
      * @return it returns a Reward Object which is the result from service layer
      */
     @PostMapping
-    public Reward addReward(@RequestBody Reward reward){
+    public Reward addReward(@Valid @RequestBody Reward reward){
         return rewardService.addReward(reward);
     }
 
