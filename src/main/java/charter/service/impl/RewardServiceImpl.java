@@ -32,7 +32,7 @@ public class RewardServiceImpl implements RewardService {
     public Map<String, Integer> getRewardPointById(Integer id) {
 
         List<Reward> rewards = repository.findAllByCustomerId(id);
-        if(rewards.size() == 0){
+        if(rewards.isEmpty()){
             throw new CustomerIdNotFoundException();
         }
 
