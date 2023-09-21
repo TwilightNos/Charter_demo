@@ -1,5 +1,5 @@
 # Charter_demo
-This demo is for the assessment for Charter. When running jar file or start the springboot project, the entry point will show on the console, which will be http://localhost:8080/
+This demo is for the assessment for Charter. When running jar file or starting the springboot project, the entry point will show on the console, which will be http://localhost:8080/
 
 ## Back-end
 The back-end part is based on SpringBoot. The whole project contains three layers: control layer, service layer and DAO layer. Also there are unit test for the methods.
